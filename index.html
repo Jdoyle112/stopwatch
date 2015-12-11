@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		var clickedId;
+		var count = 0;
+
+	</script>
+		<script src="scripts.js">
+		</script>
+	</head>
+	<body>
+		<div class="content">
+			<div id="controls">
+			<button id="startPause" onclick="startPause()">Start</button>
+			<button onclick="reset()">Reset</button>
+			</div>
+			<p id="output"></p>
+		</div>
+		<div class="teams">
+			<h2>Number of Teams</h2>
+			<select id="team_numbers" name="selector">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>
+
+			<!--<button type="button" id="submit_button" onlick="addButtons()">Submit</button>-->
+		</div>
+		<div id="team_buttons">
+		</div>
+		<div id="team_scores">
+		</div>
+			<script type="text/javascript">
+	
+				var value = '';
+				var clickedId;
+				var count = 0;
+				
+				 $('#team_numbers').change(function() {
+				    var number = $('#team_numbers').val();
+				    var html = "";			   
+				    for(i = 0; i < number; i++){
+				    	$('#team_buttons').empty();
+				    	html = html + '<button>Team ' + (i + 1) + '</button>';
+				    $('#team_buttons').append(html); 
+				    $('#team_buttons').find('button').each(function(i){
+				    	$(this).attr('id', 'button' + i);
+				    	$(this).attr('class', 'button');
+				    });
+				}; //created buttons
+				    
+				    for(i = 0; i < number; i++){
+				    	$('#team_scores').empty();
+				    	value = value + '<p>' + '</p>';
+				  		$('#team_scores').append(value);
+				  		$('#team_scores').find('p').each(function(e){
+				    	$(this).attr('id', 'p' + e);
+				  	});
+				  	};// created <p> //			    
+				    });
+
+				
+			
+			
+				$(document).on('click', '.button', function(event){
+					clickedId = $(this).attr('id');	
+					count++;
+					var buttonVal = $(this).text();
+					var newVal = buttonVal.slice(0, 6);
+					$('#' + clickedId).html(newVal + '<br>' + '<br>' + '<br>' + count);			
+				});
+				
+
+				//$('#' + clickedId).click(function(){
+				//	alert(hi);
+				//	count++;
+				//	display.innerHTML = count;
+					
+			
+  	
+			</script>
+	</body>
+</html>
+</html>
